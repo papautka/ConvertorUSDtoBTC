@@ -52,6 +52,8 @@ dependencies {
     implementation(libs.androidx.rxjava)
     implementation(libs.androidx.retrofit)
     implementation(libs.androidx.retrofit.converter.gson)
+    implementation ("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
+
 
     // ViewModel and LiveData
     implementation(libs.androidx.livedata.ktx)
