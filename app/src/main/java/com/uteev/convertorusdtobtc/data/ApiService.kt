@@ -18,15 +18,16 @@ interface ApiService {
     @GET("pricemultifull")
     fun getFullPriceList(
         @Query(QUERY_PARAM_API_KEY) apiKey: String = "",
-        @Query(QUERY_PARAM_FROM_SYMBOL) fromSymbol: String,
-        @Query(QUERY_PARAM_TO_SYMBOL) toSymbol: String = CURRENCY_USD
+        @Query(QUERY_PARAM_FROM_SYMBOLS) fromSymbol: String,
+        @Query(QUERY_PARAM_TO_SYMBOLS) toSymbol: String = CURRENCY_USD
     ) : Single<CoinPriceInfoRawData>
     companion object {
         const val QUERY_PARAM_API_KEY = "api_key"
         const val QUERY_PARAM_LIMIT = "limit"
         const val QUERY_PARAM_TO_SYMBOL = "tsym"
+        const val QUERY_PARAM_TO_SYMBOLS = "tsyms"
+        const val QUERY_PARAM_FROM_SYMBOLS = "fsyms"
         private const val CURRENCY_USD = "USD"
         private const val CURRENCY_BTC = "BTC"
-        const val QUERY_PARAM_FROM_SYMBOL = "fsym"
     }
 }
