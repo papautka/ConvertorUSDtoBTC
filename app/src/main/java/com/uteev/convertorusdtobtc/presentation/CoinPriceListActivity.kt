@@ -30,6 +30,7 @@ class CoinPriceListActivity : AppCompatActivity() {
     private fun setupRecyclerView() {
         val rvShopList = findViewById<RecyclerView>(R.id.rv_list_coin_info)
         installRv(rvShopList)
+        setupOnClickListener()
     }
 
     private fun installRv(rvShopList: RecyclerView) {
@@ -38,6 +39,13 @@ class CoinPriceListActivity : AppCompatActivity() {
             coinListAdapter = CoinListAdapter()
             adapter = coinListAdapter
             Log.d("Success adapter", coinListAdapter.toString())
+        }
+    }
+    private fun setupOnClickListener() {
+        coinListAdapter.onCoinItemClick = {
+            Log.d("Success click", it.toString())
+            val intentEdit = CountItemActivity.newIntent(this)
+            startActivity(intentEdit)
         }
     }
 

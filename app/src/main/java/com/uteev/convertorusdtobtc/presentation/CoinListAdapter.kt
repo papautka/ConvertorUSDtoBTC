@@ -10,7 +10,7 @@ import com.uteev.convertorusdtobtc.domain.pojo.coinprice.CoinPriceInfo
 
 class CoinListAdapter : ListAdapter<CoinPriceInfo, CoinItemViewHolder>(CoinItemDiffCallBack()) {
 
-
+    var onCoinItemClick : ((CoinPriceInfo) -> Unit)? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoinItemViewHolder {
         val layout = R.layout.item_coin
         val view = LayoutInflater.from(parent.context).inflate(layout, parent, false)
@@ -19,6 +19,10 @@ class CoinListAdapter : ListAdapter<CoinPriceInfo, CoinItemViewHolder>(CoinItemD
 
     override fun onBindViewHolder(viewHolder: CoinItemViewHolder, position: Int) {
         val item = getItem(position)
+
+        viewHolder.view.setOnClickListener {
+            onCoinItemClick?.invoke(item)
+        }
         viewHolder.tvFsTs.text = item.fromSymbol + " / " + item.toSymbol
         viewHolder.tvPrice.text = item.price.toString()
         viewHolder.tvTimeLastUpdate.text = item.getFormattedTime()
