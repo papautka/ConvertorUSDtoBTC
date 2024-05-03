@@ -20,6 +20,8 @@ class CoinViewModel(application: Application) : AndroidViewModel(application) {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
+                val namesCoinInfo = it.data?.map { it.coinInfo?.name }?.joinToString(",")
+                Log.d("namesCoinInfo", namesCoinInfo.toString())
                 Log.d("SUCCESS_OF_LOADING_DATA", it.toString())
             },{
                 Log.d("FAIL_OF_LOADING_DATA", it.message.toString())
