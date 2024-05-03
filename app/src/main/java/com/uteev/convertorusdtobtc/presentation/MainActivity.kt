@@ -4,10 +4,9 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.uteev.convertorusdtobtc.R
-import com.uteev.convertorusdtobtc.data.ApiFactory
+import com.uteev.convertorusdtobtc.data.apiservice.ApiFactory
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 class MainActivity : AppCompatActivity() {

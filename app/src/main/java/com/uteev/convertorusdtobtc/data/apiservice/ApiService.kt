@@ -1,7 +1,6 @@
-package com.uteev.convertorusdtobtc.data
+package com.uteev.convertorusdtobtc.data.apiservice
 
 import com.uteev.convertorusdtobtc.domain.pojo.coininfo.ListOfDatum
-import com.uteev.convertorusdtobtc.domain.pojo.coinprice.CoinPriceInfo
 import com.uteev.convertorusdtobtc.domain.pojo.coinprice.CoinPriceInfoRawData
 import io.reactivex.Single
 import retrofit2.http.GET

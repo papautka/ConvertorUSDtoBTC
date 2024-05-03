@@ -1,6 +1,5 @@
-package com.uteev.convertorusdtobtc.data
+package com.uteev.convertorusdtobtc.data.apiservice
 
-import io.reactivex.plugins.RxJavaPlugins
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -14,5 +13,5 @@ object ApiFactory {
         .baseUrl(BASE_URL)
         .build()
 
-    val apiService :ApiService = retrofit.create(ApiService::class.java)
+    val apiService : ApiService = retrofit.create(ApiService::class.java)
 }
