@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    app:cardUseCompatPadding="true">
+
+
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+       <ImageView
+           android:id="@+id/iLogoCoin"
+           android:layout_width="40dp"
+           android:layout_height="40dp"
+           android:layout_margin="8dp"
+           app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           tools:src="@mipmap/ic_launcher"/>
+
+       <TextView
+           android:id="@+id/tvFsTs"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:padding="16dp"
+           android:textColor="@color/black"
+           android:textSize="20sp"
+           android:text="@string/btc_usd"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintBottom_toTopOf="@id/tvPrice"
+           />
+
+       <TextView
+           android:id="@+id/tvPrice"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:padding="16dp"
+           android:textColor="@color/black"
+           android:textSize="25sp"
+           android:textStyle="bold"
+           android:text="@string/tmp_string_for_price"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintTop_toBottomOf="@id/tvFsTs"
+           app:layout_constraintBottom_toTopOf="@id/tvTimeLastUpdate"
+
+           />
+
+       <TextView
+           android:id="@+id/tvTimeLastUpdate"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:padding="16dp"
+           android:text="@string/tmp_time_last_update"
+           android:textColor="@color/black"
+           android:textSize="18sp"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintTop_toBottomOf="@id/tvPrice"
+
+           />
+
+
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

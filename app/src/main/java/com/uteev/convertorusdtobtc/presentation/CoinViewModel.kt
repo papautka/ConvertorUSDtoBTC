@@ -3,6 +3,7 @@ package com.uteev.convertorusdtobtc.presentation
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import com.google.gson.Gson
 import com.uteev.convertorusdtobtc.data.apiservice.ApiFactory
 import com.uteev.convertorusdtobtc.data.database.AppDatabase
@@ -11,6 +12,7 @@ import com.uteev.convertorusdtobtc.domain.pojo.coinprice.CoinPriceInfoRawData
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
 
 class CoinViewModel(application: Application) : AndroidViewModel(application) {
     private val db = AppDatabase.getInstance(application)
@@ -18,11 +20,18 @@ class CoinViewModel(application: Application) : AndroidViewModel(application) {
 
     private val compositeDisposable = CompositeDisposable()
 
-    fun loadData() {
+    fun getDetailInfo(fSyms : String) : LiveData<CoinPriceInfo> {
+        return db.coinPriceInfoDao().getPriceInfoAboutCoin(fSyms)
+    }
+
+    private fun loadData() {
         val disposbale = ApiFactory.apiService.getTopCoinsInfo()
             .map { it.data?.map { it.coinInfo?.name }?.joinToString(",") }
             .flatMap { ApiFactory.apiService.getFullPriceList(fromSymbol = it) }
             .map { getPriceListFromRawData(it) }
+            .delaySubscription(10, TimeUnit.SECONDS)
+            .repeat()//повторяем запрос eсли успешно
+            .retry()//повторяем запрос если не успешно
             .subscribeOn(Schedulers.io())
             .subscribe({
                 Log.d("SUCCESS_OF_LOADING_DATA", it.toString())
@@ -64,6 +73,9 @@ class CoinViewModel(application: Application) : AndroidViewModel(application) {
         return result
     }
 
+    init {
+        loadData()
+    }
     override fun onCleared() {
         super.onCleared()
         compositeDisposable.dispose()

@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">ConvertorUSDtoBTC</string>
+    <string name="btc_usd">BTC/USD</string>
+    <string name="tmp_string_for_price">7500</string>
+    <string name="tmp_time_last_update">Время последнего обовления: 4:15:00</string>
 </resources>
